@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>
+            {% block title %}{{ site_title|default:'Página principal' }} | Bruto {% endblock %}
+        </title>
+    </head>
+    <body>
+        <div class="logo">
+            <img src="/images/TPP-logo.svg">
+        </div>
+        <nav>
+            <ul>
+                <li>
+                    <a href="{% url 'home' %}">Página principal</a>
+                </li>
+                <li>
+                    <a href="{% url 'upload' %}">Enviar horários</a>
+                </li>
+                <li>
+                    <a href="{% url 'browser' %}">Ver horários</a>
+                </li>
+            </ul>
+        </nav>
+        {% block content %}{% endblock %}
+    </body>
+</html>

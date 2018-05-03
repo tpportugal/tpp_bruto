@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  nginx:
+    hostname: nginx
+    image: nginx:mainline-alpine
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - .:/data/tpp_bruto
+    links:
+      - web
+    ports:
+      - '80:80'
+      - '443:443'
+    restart: always
+  db:
+    image: postgres
+  web:
+    hostname: web
+    build: .
+    command: gunicorn -b 0.0.0.0:29000 bruto.wsgi:application --reload
+    volumes:
+      - .:/data/tpp_bruto
+    depends_on:
+      - db
+    restart: always
