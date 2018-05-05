@@ -1,4 +1,17 @@
 {% extends 'layout.html'  %}
+
 {% block content %}
-Hello World
+    <p>
+        Esta plataforma organiza os horários não processados de operadoras de transporte público.
+        Os contribuidores podem:
+        <ul>
+            <li>Fazer upload de horários não processados.</li>
+            <li>Criar rotas, paragens</li>
+            <li>Atribuir os horários às respetivas rotas</li>
+            <li>Revisão do trabalho de outros contribuidores</li>
+        </ul>
+
+    </p>
+    <a href="{% url 'become-contributor' %}">Quero contribuir!</a>
+    <a href="{% url 'browser' %}">Ver horários</a>
 {% endblock %}
